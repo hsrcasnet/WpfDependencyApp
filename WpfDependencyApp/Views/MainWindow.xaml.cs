@@ -20,6 +20,7 @@ namespace WpfDependencyApp.Views
 
             this.DisplayAllEmployees();
         }
+
         private async void DisplayAllEmployees()
         {
             try
