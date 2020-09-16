@@ -16,7 +16,17 @@ namespace WpfDependencyApp
 
             // Register dependencies
             serviceCollection.AddLogging(configure => configure.AddDebug());
-            serviceCollection.AddSingleton<IEmployeeRepository, EmployeeRepositoryStub>();
+
+            var useMockServices = true;
+            if (useMockServices)
+            {
+                serviceCollection.AddSingleton<IEmployeeRepository, EmployeeRepositoryStub>();
+            }
+            else
+            {
+                serviceCollection.AddSingleton<IEmployeeRepository, EmployeeRepositoryEF>();
+            }
+
             serviceCollection.AddSingleton<MainWindow>();
 
             // Create DI container
